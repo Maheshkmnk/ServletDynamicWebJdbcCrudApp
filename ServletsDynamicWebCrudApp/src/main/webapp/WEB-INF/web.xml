@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>ServletsDynamicWebCrudApp</display-name>
+
+  <welcome-file-list>
+    <welcome-file>delete.html</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+	  <servlet-name>InsertOperation</servlet-name>
+	  <servlet-class>in.mypackage.controller.InsertOperation</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+	  <servlet-name>InsertOperation</servlet-name>
+	  <url-pattern>/insertOp</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DeleteOperation</servlet-name>
+  	<servlet-class>in.mypackage.controller.DeleteOperation</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>DeleteOperation</servlet-name>
+  	<url-pattern>/delete</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>UpdationOperation</servlet-name>
+	<servlet-class>in.mypackage.controller.UpdationOperation</servlet-class>  
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>UpdationOperation</servlet-name>
+  	<url-pattern>/update</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ReadOperation</servlet-name>
+  	<servlet-class>in.mypackage.controller.ReadOperation</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ReadOperation</servlet-name>
+  	<url-pattern>/read</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+  	<display-name>InsertFilterValidation</display-name>
+  	<filter-name>InsertFilterValidation</filter-name>
+  	<filter-class>in.mypackage.filter.InsertFilterValidation</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>InsertFilterValidation</filter-name>
+  	<url-pattern>/insertOp</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<display-name>ReadFilterValidation</display-name>
+  	<filter-name>ReadFilterValidation</filter-name>
+  	<filter-class>in.mypackage.filter.ReadFilterValidation</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>ReadFilterValidation</filter-name>
+  	<url-pattern>/read</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<display-name>DeleteFilterValidation</display-name>
+  	<filter-name>DeleteFilterValidation</filter-name>
+  	<filter-class>in.mypackage.filter.DeleteFilterValidation</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>DeleteFilterValidation</filter-name>
+  	<url-pattern>/delete</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>UpdateFilterValidation</filter-name>
+  	<filter-class>in.mypackage.filter.UpdateFilterValidation</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>UpdateFilterValidation</filter-name>
+  	<url-pattern>/update</url-pattern>
+  </filter-mapping>
+  
+  
+</web-app>
