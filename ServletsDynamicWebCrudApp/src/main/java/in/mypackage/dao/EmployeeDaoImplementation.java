@@ -14,7 +14,7 @@ public class EmployeeDaoImplementation implements IEmployeeDao {
 	Connection connection = null;
 	ResultSet resultSet = null;
 	PreparedStatement pstmt = null;
-	EmployeeDto employeeDto = null;
+	
 	
 	@Override
 	public String insertRecord(String eid, String ename, Integer eage, String email, String emobile) {
@@ -78,7 +78,7 @@ public class EmployeeDaoImplementation implements IEmployeeDao {
 	public String updateRecord(EmployeeDto EmployeeDto) {
 		
 		String queryString = "update employee set ename=?, eage=?, email=?, emobile=? where eid = ?";
-		
+		EmployeeDto employeeDto = new EmployeeDto();
 		try {
 			connection = JdbcUtil.getJdbcConnection();
 			
@@ -106,8 +106,10 @@ public class EmployeeDaoImplementation implements IEmployeeDao {
 
 	@Override
 	public EmployeeDto searchRecord(String eid) {
-		String queryString = "select eid, ename, eage, email, emobile from employee where eid=?";
-		employeeDto = new EmployeeDto();
+		String queryString = "select ename, eage, email, emobile from employee where eid=?";
+		EmployeeDto employeeDto = new EmployeeDto();
+		System.out.println(">>>>searchRecord EmployeeDao implementation....");
+		System.out.println(eid);
 		try {
 			connection = JdbcUtil.getJdbcConnection();
 			if(connection != null) {
@@ -117,7 +119,14 @@ public class EmployeeDaoImplementation implements IEmployeeDao {
 				pstmt.setString(1, eid);
 				resultSet = pstmt.executeQuery();
 			}
-			if(resultSet != null) {
+			if(resultSet.next()) {
+				
+				System.out.println(">>>>inside result set ....");
+				System.out.println(resultSet.getString(1));
+				System.out.println(resultSet.getString(2));
+				System.out.println(resultSet.getInt(3));
+				System.out.println(resultSet.getString(4));
+				System.out.println(resultSet.getString(5));
 				
 				employeeDto.setEid(resultSet.getString(1));
 				employeeDto.setEname(resultSet.getString(2));
@@ -125,7 +134,7 @@ public class EmployeeDaoImplementation implements IEmployeeDao {
 				employeeDto.setEmail(resultSet.getString(4));
 				employeeDto.setEmobile(resultSet.getString(5));
 				
-				
+				System.out.println(employeeDto);
 				return employeeDto;
 			}
 			

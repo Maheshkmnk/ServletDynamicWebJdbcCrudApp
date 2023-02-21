@@ -11,11 +11,6 @@ import java.util.Properties;
 
 
 public class JdbcUtil {
-
-	public static void main(String[] args) throws IOException, SQLException {
-		// TODO Auto-generated method stub
-		getJdbcConnection();
-	}
 	
 	private  JdbcUtil() {}
 	
@@ -34,7 +29,7 @@ public class JdbcUtil {
 	
 	public static Connection getJdbcConnection() throws IOException, SQLException {
 		
-		FileInputStream fis =new FileInputStream("D:\\Ineuron Full Stack Java course\\Projects\\ServletsDynamicWebCrudApp\\src\\main\\java\\in\\mypackage\\properties\\properties.properties");
+		FileInputStream fis =new FileInputStream("C:\\Users\\kmnkm\\git\\repository3\\ServletsDynamicWebCrudApp\\src\\main\\java\\in\\mypackage\\properties\\properties.properties");
 		
 		Properties properties = new Properties();
 		
